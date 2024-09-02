@@ -8,6 +8,7 @@ import {
   Dimensions,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import { Link } from "expo-router";
 
 const { width, height } = Dimensions.get("window");
 
@@ -42,7 +43,9 @@ const Onboarding1 = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % data.length);
+    if (currentIndex < data.length - 1) {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % data.length);
+    }
   };
 
   return (
@@ -64,33 +67,43 @@ const Onboarding1 = () => {
           <Text style={styles.paragraph}>{data[currentIndex].paragraph}</Text>
         </View>
 
-        <View style={styles.indicatorContainer}>
-          {data.map((_, index) => (
-            <Image
-              key={index}
-              source={
-                currentIndex === index
-                  ? require("../assets/icons/Line.png")
-                  : require("../assets/icons/Dot.png")
-              }
-              style={[
-                styles.indicatorImage,
-                currentIndex === index && styles.activeIndicatorImage,
-              ]}
-            />
-          ))}
-        </View>
-
-        <TouchableOpacity style={styles.button} onPress={handleNext}>
-          <View style={styles.ring}>
-            <View style={styles.buttonCircle}>
-              <Image
-                source={require("../assets/icons/arrow-icon.jpg")}
-                style={styles.icon}
-              />
+        {currentIndex === data.length - 1 ? (
+          <Link href="/signup1">
+            <TouchableOpacity style={styles.startButton}>
+              <Text style={styles.startButtonText}>Start Your Journey</Text>
+            </TouchableOpacity>
+          </Link>
+        ) : (
+          <>
+            <View style={styles.indicatorContainer}>
+              {data.map((_, index) => (
+                <Image
+                  key={index}
+                  source={
+                    currentIndex === index
+                      ? require("../assets/icons/Line.png")
+                      : require("../assets/icons/Dot.png")
+                  }
+                  style={[
+                    styles.indicatorImage,
+                    currentIndex === index && styles.activeIndicatorImage,
+                  ]}
+                />
+              ))}
             </View>
-          </View>
-        </TouchableOpacity>
+
+            <TouchableOpacity style={styles.button} onPress={handleNext}>
+              <View style={styles.ring}>
+                <View style={styles.buttonCircle}>
+                  <Image
+                    source={require("../assets/icons/arrow-icon.jpg")}
+                    style={styles.icon}
+                  />
+                </View>
+              </View>
+            </TouchableOpacity>
+          </>
+        )}
       </View>
     </View>
   );
@@ -124,7 +137,7 @@ const styles = StyleSheet.create({
   textContainer: {
     alignItems: "flex-start",
     marginHorizontal: 20,
-    marginBottom: 200,
+    marginBottom: 130,
   },
   title: {
     fontSize: 35,
@@ -139,7 +152,7 @@ const styles = StyleSheet.create({
   },
   button: {
     position: "absolute",
-    bottom: 20,
+    bottom: 30,
     right: 20,
     zIndex: 2,
   },
@@ -171,7 +184,7 @@ const styles = StyleSheet.create({
   indicatorContainer: {
     flexDirection: "row",
     position: "absolute",
-    bottom: 38,
+    bottom: 50,
     left: 20,
     alignItems: "center",
   },
@@ -184,7 +197,22 @@ const styles = StyleSheet.create({
     width: 30,
     height: 10,
   },
+  startButton: {
+    backgroundColor: "#FCC423",
+    borderRadius: 15,
+    paddingVertical: 15,
+    paddingHorizontal: 40,
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 20,
+    marginTop: 20,
+    width: width - 70,
+  },
+  startButtonText: {
+    color: "#fff",
+    fontSize: 18,
+    fontWeight: "bold",
+  },
 });
-
 
 export default Onboarding1;
