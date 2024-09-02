@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-export default function ExploreScreen() {
+export default function EPassportScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>E-Passport Screen</Text>
