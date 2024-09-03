@@ -7,15 +7,15 @@ export default function TabsLayout() {
     <Tabs
       screenOptions={{
         tabBarStyle: {
-          backgroundColor: "black",
-          height: 70, // Adjust the height as needed
-          paddingVertical: 10, // Adjust padding if necessary
+          backgroundColor: "#0D0D0D",
+          height: 70,
+          paddingVertical: 10,
         },
-        tabBarActiveTintColor: "#ffffff",
+        tabBarActiveTintColor: "#FCC423",
         tabBarInactiveTintColor: "#EAEAEA",
         tabBarLabelStyle: {
-          fontSize: 14, // Increase the font size here
-          fontWeight: 'bold', // Optional: make the font bold
+          fontSize: 14,
+          fontWeight: 'bold',
         },
         headerShown: false,
       }}
@@ -30,9 +30,9 @@ export default function TabsLayout() {
         }}
       />
       <Tabs.Screen
-        name="E-Passport"
+        name="Visa"
         options={{
-          title: "E-Passport",
+          title: "Visa",
           tabBarIcon: ({ color }) => (
             <Ionicons name="document-text-outline" size={30} color={color} />
           ),
@@ -45,8 +45,8 @@ export default function TabsLayout() {
           tabBarIcon: ({ color }) => (
             <View
               style={{
-                width: 90,
-                height: 90,
+                width: 75,
+                height: 75,
                 borderRadius: 100,
                 backgroundColor: "black",
                 justifyContent: "center",
@@ -60,18 +60,18 @@ export default function TabsLayout() {
             >
               <View
                 style={{
-                  width: 70,
-                  height: 70,
+                  width: 55,
+                  height: 55,
                   borderRadius: 100,
-                  backgroundColor: "#FBBC04",
+                  backgroundColor: "#FFFFFF",
                   justifyContent: "center",
                   alignItems: "center",
                 }}
               >
                 <Ionicons
                   name="compass-outline"
-                  size={35}
-                  color="white"
+                  size={20}
+                  color="black"
                 />
               </View>
             </View>
