@@ -37,12 +37,12 @@ const Signup1 = () => {
           ancient temples, with the assurance that you're always connected to
           the latest safety information.
         </Text>
-        <TouchableOpacity style={styles.signupButton}>
+        <TouchableOpacity style={styles.signupButton} onPress={() => router.push("/signup2")}>
           <Text style={styles.signupButtonText}>Signup</Text>
         </TouchableOpacity>
         <Text style={styles.paragraph}>
           Already have an account?{" "}
-          <TouchableOpacity onPress={() => router.push("/login")}>
+          <TouchableOpacity onPress={() => router.push("/login1")}>
             <Text style={{ color: "#FCC423", fontWeight: "bold" }}>Login</Text>
           </TouchableOpacity>
         </Text>

@@ -56,7 +56,7 @@ const CustomTabBar = () => {
             <>
               <View style={styles.exploreIconContainer}>
                 <View style={styles.exploreIconInner}>
-                  <Ionicons name={tab.icon} size={35} color="white" />
+                  <Ionicons name={tab.icon} size={25} color="black" />
                 </View>
               </View>
               <Text
@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
     width: 70,
     height: 70,
     borderRadius: 100,
-    backgroundColor: "#FBBC04",
+    backgroundColor: "#FFFFFF",
     justifyContent: "center",
     alignItems: "center",
   },

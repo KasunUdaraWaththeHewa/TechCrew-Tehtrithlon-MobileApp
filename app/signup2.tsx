@@ -109,7 +109,10 @@ const Signup2 = () => {
           />
         </View>
 
-        <TouchableOpacity style={styles.signupButton}>
+        <TouchableOpacity
+          style={styles.signupButton}
+          onPress={() => router.push("/verificationCode")}
+        >
           <Text style={styles.signupButtonText}>SignUp</Text>
         </TouchableOpacity>
 

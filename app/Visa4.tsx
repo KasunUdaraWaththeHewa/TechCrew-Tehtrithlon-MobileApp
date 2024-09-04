@@ -10,8 +10,10 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import VisaHeader from "@/components/VisaHeader";
 import CustomTabBar from "@/components/CustomTabBar";
+import { useRouter } from "expo-router";
 
 export default function VisaApplication() {
+  const router = useRouter();
   return (
     <>
       <VisaHeader />
@@ -74,10 +76,10 @@ export default function VisaApplication() {
         </View>
 
         <View style={styles.navigationButtons}>
-          <TouchableOpacity style={styles.previousButton}>
+          <TouchableOpacity style={styles.previousButton} onPress={() => router.push("/Visa3")}>
             <Text style={styles.previousButtonText}>Previous</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.nextButton}>
+          <TouchableOpacity style={styles.nextButton} onPress={() => router.push("/Visa5")}>
             <Text style={styles.nextButtonText}>Next</Text>
           </TouchableOpacity>
         </View>

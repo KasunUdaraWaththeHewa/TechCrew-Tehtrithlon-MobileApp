@@ -78,17 +78,23 @@ const Signup1 = () => {
         </View>
         <Text style={styles.paragraph}>
           Didn’t get a code ?{" "}
-          <TouchableOpacity onPress={() => router.push("/resend")}>
+          <TouchableOpacity>
             <Text style={{ color: "#FCC423", fontWeight: "bold" }}>
               Click to resend.
             </Text>
           </TouchableOpacity>
         </Text>
         <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-          <TouchableOpacity style={styles.cancelButton}>
+          <TouchableOpacity
+            style={styles.cancelButton}
+            onPress={() => router.push("/signup2")}
+          >
             <Text style={styles.cancelButtonText}>Cancel</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.verifyButton}>
+          <TouchableOpacity
+            style={styles.verifyButton}
+            onPress={() => router.push("/Home")}
+          >
             <Text style={styles.verifyButtonText}>Verify</Text>
           </TouchableOpacity>
         </View>

@@ -69,7 +69,7 @@ const Login1 = () => {
             title="Remember Me?"
             textStyle={styles.checkboxLabel}
           />
-          <TouchableOpacity onPress={() => router.push("/forgot-password")}>
+          <TouchableOpacity onPress={() => router.push("/Home")}>
             <Text style={styles.forgotPassword}>Forgot Password?</Text>
           </TouchableOpacity>
         </View>
@@ -81,7 +81,7 @@ const Login1 = () => {
         <Text style={styles.paragraph}>
           Don’t have an account?{" "}
           <TouchableOpacity onPress={() => router.push("/signup2")}>
-            <Text style={{ color: "#FCC423", fontWeight: "bold"}}>
+            <Text style={{ color: "#FCC423", fontWeight: "bold" }}>
               {" "}
               SignUp
             </Text>
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     width: "100%",
-    height: height * 0.60,
+    height: height * 0.6,
     backgroundColor: "#fff",
     zIndex: 3,
     borderTopLeftRadius: 30,
