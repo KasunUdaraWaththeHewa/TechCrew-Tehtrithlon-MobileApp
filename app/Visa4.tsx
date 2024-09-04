@@ -1,81 +1,86 @@
 import React from "react";
-import { View, StyleSheet, Text, TextInput, TouchableOpacity, ScrollView } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import VisaHeader from "@/components/VisaHeader";  
+import VisaHeader from "@/components/VisaHeader";
 
 export default function VisaApplication() {
   return (
     <>
-      
       <VisaHeader />
-
       <ScrollView contentContainerStyle={styles.container}>
         <View style={styles.formContainer}>
           <Text style={styles.sectionTitle}>Travel Information</Text>
 
-          
-          <TextInput 
-            style={styles.input} 
-            placeholder="Tourism, visiting friends or relatives, medical treatment, cultural performance" 
-            placeholderTextColor="#888888" 
-          />
-
-      
-          <View style={styles.inputWithIcon}>
+          <View style={styles.fieldContainer}>
+            <Text style={styles.subTitle}>Purpose of Visit</Text>
             <TextInput
-              style={styles.inputWithFlex}
-              placeholder="Intended Date of Arrival in Sri Lanka"
-              value="2024-09-12"  
+              style={styles.input}
+              placeholder="Tourism, Medical Treatment, etc."
+              placeholderTextColor="#888888"
             />
-            <Ionicons name="calendar" size={24} color="#000" style={styles.icon} />
           </View>
 
-         
-          <TextInput 
-            style={styles.input} 
-            placeholder="Intended Duration of Stay" 
-            value="2 weeks" 
-          />
+          <View style={styles.fieldContainer}>
+            <Text style={styles.subTitle}>Intended Date of Arrival</Text>
+            <View style={styles.inputWithIcon}>
+              <TextInput
+                style={styles.inputWithFlex}
+                placeholder="YYYY-MM-DD"
+                value="2024-09-12"
+              />
+              <Ionicons
+                name="calendar"
+                size={24}
+                color="#000"
+                style={styles.icon}
+              />
+            </View>
+          </View>
 
-          
-          <TextInput 
-            style={styles.input} 
-            placeholder="Address in Sri Lanka" 
-            value="Apt.12, Spring Hotel, Colombo 7"  
-          />
+          <View style={styles.fieldContainer}>
+            <Text style={styles.subTitle}>Intended Duration of Stay</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="e.g., 2 weeks"
+              value="2 weeks"
+            />
+          </View>
 
-         
-          <TextInput 
-            style={styles.input} 
-            placeholder="Previous Visits to Sri Lanka (If Any)" 
-            placeholderTextColor="#888888" 
-          />
+          <View style={styles.fieldContainer}>
+            <Text style={styles.subTitle}>Address in Sri Lanka</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Enter address"
+              value="Apt.12, Spring Hotel, Colombo 7"
+            />
+          </View>
+
+          <View style={styles.fieldContainer}>
+            <Text style={styles.subTitle}>Previous Visits to Sri Lanka</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="If Any"
+              placeholderTextColor="#888888"
+            />
+          </View>
+        </View>
+
+        <View style={styles.navigationButtons}>
+          <TouchableOpacity style={styles.previousButton}>
+            <Text style={styles.previousButtonText}>Previous</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.nextButton}>
+            <Text style={styles.nextButtonText}>Next</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
-
-    
-      <View style={styles.bottomNavigation}>
-        <TouchableOpacity style={styles.navItem}>
-          <Ionicons name="home" size={24} color="#000" />
-          <Text>Home</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem}>
-          <Ionicons name="document-text" size={24} color="#FCC423" />
-          <Text style={{ color: "#FCC423" }}>E-Passport</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem}>
-          <Ionicons name="compass" size={24} color="#000" />
-          <Text>Explore</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem}>
-          <Ionicons name="notifications" size={24} color="#000" />
-          <Text>Alerts</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem}>
-          <Ionicons name="person" size={24} color="#000" />
-          <Text>Profile</Text>
-        </TouchableOpacity>
-      </View>
     </>
   );
 }
@@ -84,9 +89,13 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     backgroundColor: "#fff",
+    padding: 20,
   },
   formContainer: {
     padding: 20,
+    backgroundColor: "#f9f9f9",
+    borderRadius: 12,
+    marginBottom: 20,
   },
   sectionTitle: {
     fontSize: 18,
@@ -94,12 +103,20 @@ const styles = StyleSheet.create({
     color: "#FCC423",
     marginBottom: 20,
   },
+  fieldContainer: {
+    marginBottom: 20,
+  },
+  subTitle: {
+    fontSize: 16,
+    marginBottom: 8,
+    color: "#555",
+  },
   input: {
     borderWidth: 1,
     borderColor: "#ccc",
     borderRadius: 10,
-    padding: 10,
-    marginBottom: 15,
+    padding: 12,
+    backgroundColor: "#fff",
   },
   inputWithIcon: {
     flexDirection: "row",
@@ -108,25 +125,40 @@ const styles = StyleSheet.create({
     borderColor: "#ccc",
     borderRadius: 10,
     paddingHorizontal: 10,
-    paddingVertical: 8,
-    marginBottom: 15,
+    paddingVertical: 10,
+    backgroundColor: "#fff",
   },
   inputWithFlex: {
     flex: 1,
     fontSize: 14,
-    color: "#999",
+    color: "#333",
   },
   icon: {
-    marginLeft: 10,  
+    marginLeft: 10,
   },
-  bottomNavigation: {
+  navigationButtons: {
     flexDirection: "row",
-    justifyContent: "space-around",
-    paddingVertical: 10,
-    borderTopWidth: 1,
-    borderTopColor: "#ccc",
+    justifyContent: "space-between",
+    paddingHorizontal: 20,
   },
-  navItem: {
-    alignItems: "center",
+  previousButton: {
+    backgroundColor: "#f0f0f0",
+    borderRadius: 8,
+    paddingVertical: 10,
+    paddingHorizontal: 30,
+  },
+  previousButtonText: {
+    color: "#000",
+    fontWeight: "600",
+  },
+  nextButton: {
+    backgroundColor: "#FCC423",
+    borderRadius: 8,
+    paddingVertical: 10,
+    paddingHorizontal: 30,
+  },
+  nextButtonText: {
+    color: "#fff",
+    fontWeight: "600",
   },
 });
