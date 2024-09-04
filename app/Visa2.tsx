@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import VisaHeader from "@/components/VisaHeader";
+import CustomTabBar from "@/components/CustomTabBar";
 
 export default function VisaScreen() {
   const [selectedVisa, setSelectedVisa] = useState(null);
@@ -87,6 +88,7 @@ export default function VisaScreen() {
           <Text style={styles.proceedButtonText}>Proceed</Text>
         </TouchableOpacity>
       </ScrollView>
+      <CustomTabBar />
     </>
   );
 }

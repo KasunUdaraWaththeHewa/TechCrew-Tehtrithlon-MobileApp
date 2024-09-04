@@ -9,6 +9,9 @@ export default function RootLayout() {
       <Stack.Screen name="signup2" />
       <Stack.Screen name="verificationCode" />
       <Stack.Screen name="(tabs)" />
+      <Stack.Screen name="visa2" />
+      <Stack.Screen name="visa3" />
+      <Stack.Screen name="visa4" />
     </Stack>
   );
 }

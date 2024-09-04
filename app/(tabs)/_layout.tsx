@@ -8,20 +8,20 @@ export default function TabsLayout() {
       screenOptions={{
         tabBarStyle: {
           backgroundColor: "black",
-          height: 70, // Adjust the height as needed
-          paddingVertical: 10, // Adjust padding if necessary
+          height: 70,
+          paddingVertical: 10,
         },
         tabBarActiveTintColor: "#ffffff",
         tabBarInactiveTintColor: "#EAEAEA",
         tabBarLabelStyle: {
-          fontSize: 14, // Increase the font size here
-          fontWeight: "bold", // Optional: make the font bold
+          fontSize: 14,
+          fontWeight: "bold",
         },
         headerShown: false,
       }}
     >
       <Tabs.Screen
-        name="Home"
+        name="Home/index"
         options={{
           title: "Home",
           tabBarIcon: ({ color }) => (
@@ -30,16 +30,16 @@ export default function TabsLayout() {
         }}
       />
       <Tabs.Screen
-        name="E-Passport"
+        name="Visa/index"
         options={{
-          title: "E-Passport",
+          title: "Visa",
           tabBarIcon: ({ color }) => (
             <Ionicons name="document-text-outline" size={30} color={color} />
           ),
         }}
       />
       <Tabs.Screen
-        name="Explore"
+        name="Explore/index"
         options={{
           title: "Explore",
           tabBarIcon: ({ color }) => (
@@ -75,7 +75,7 @@ export default function TabsLayout() {
         }}
       />
       <Tabs.Screen
-        name="Alerts"
+        name="Alerts/index"
         options={{
           title: "Alerts",
           tabBarIcon: ({ color }) => (
@@ -84,7 +84,7 @@ export default function TabsLayout() {
         }}
       />
       <Tabs.Screen
-        name="Profile"
+        name="Profile/index"
         options={{
           title: "Profile",
           tabBarIcon: ({ color }) => (
