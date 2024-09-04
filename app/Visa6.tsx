@@ -10,17 +10,24 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import VisaHeader from "@/components/VisaHeader";
 import CustomTabBar from "@/components/CustomTabBar";
+import { useRouter } from "expo-router";
 
 export default function ReviewInformation() {
+  const router = useRouter();
   const [isChecked1, setChecked1] = useState(false);
   const [isChecked2, setChecked2] = useState(false);
   const [isChecked3, setChecked3] = useState(false);
 
-  const CustomCheckBox = ({ isChecked, onPress }) => (
-    <TouchableOpacity
-      style={styles.checkBox}
-      onPress={onPress}
-    >
+  interface CustomCheckBoxProps {
+    isChecked: boolean;
+    onPress: () => void;
+  }
+
+  const CustomCheckBox: React.FC<CustomCheckBoxProps> = ({
+    isChecked,
+    onPress,
+  }) => (
+    <TouchableOpacity style={styles.checkBox} onPress={onPress}>
       <Ionicons
         name={isChecked ? "checkbox" : "square-outline"}
         size={24}
@@ -35,7 +42,9 @@ export default function ReviewInformation() {
       <ScrollView contentContainerStyle={styles.container}>
         {/* Review and Confirm Information Section */}
         <View style={styles.formContainer}>
-          <Text style={styles.sectionTitle}>Review and Confirm Your Information</Text>
+          <Text style={styles.sectionTitle}>
+            Review and Confirm Your Information
+          </Text>
 
           <View style={styles.checkBoxContainer}>
             <CustomCheckBox
@@ -43,8 +52,8 @@ export default function ReviewInformation() {
               onPress={() => setChecked1(!isChecked1)}
             />
             <Text style={styles.checkBoxText}>
-              I hereby declare that the information provided in this application is true,
-              accurate, and complete to the best of my knowledge.
+              I hereby declare that the information provided in this application
+              is true, accurate, and complete to the best of my knowledge.
             </Text>
           </View>
 
@@ -54,8 +63,8 @@ export default function ReviewInformation() {
               onPress={() => setChecked2(!isChecked2)}
             />
             <Text style={styles.checkBoxText}>
-              I understand and agree to comply with all applicable Sri Lankan immigration laws
-              and regulations during my stay.
+              I understand and agree to comply with all applicable Sri Lankan
+              immigration laws and regulations during my stay.
             </Text>
           </View>
 
@@ -65,14 +74,16 @@ export default function ReviewInformation() {
               onPress={() => setChecked3(!isChecked3)}
             />
             <Text style={styles.checkBoxText}>
-              I have read and agree to the terms and conditions outlined by the Sri Lankan
-              immigration authorities, including policies on visa issuance and use.
+              I have read and agree to the terms and conditions outlined by the
+              Sri Lankan immigration authorities, including policies on visa
+              issuance and use.
             </Text>
           </View>
 
           <View style={styles.fieldContainer}>
             <Text style={styles.subTitle}>
-              Please provide your electronic signature to complete this application
+              Please provide your electronic signature to complete this
+              application
             </Text>
             <TouchableOpacity style={styles.uploadContainer}>
               <TextInput
@@ -93,10 +104,16 @@ export default function ReviewInformation() {
 
         {/* Previous and Submit Buttons */}
         <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.previousButton}>
+          <TouchableOpacity
+            style={styles.previousButton}
+            onPress={() => router.push("/Visa5")}
+          >
             <Text style={styles.previousButtonText}>Previous</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.submitButton}>
+          <TouchableOpacity
+            style={styles.submitButton}
+            onPress={() => router.push("/Visa7")}
+          >
             <Text style={styles.submitButtonText}>Submit</Text>
           </TouchableOpacity>
         </View>

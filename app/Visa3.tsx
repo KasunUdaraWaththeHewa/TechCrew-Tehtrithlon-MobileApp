@@ -12,8 +12,10 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import VisaHeader from "@/components/VisaHeader";
 import CustomTabBar from "@/components/CustomTabBar";
+import { useRouter } from "expo-router";
 
 export default function VisaApplication() {
+  const router = useRouter();
   const [selectedGender, setSelectedGender] = useState("Male");
   const [isGenderDropdownVisible, setGenderDropdownVisible] = useState(false);
   const genders = ["Male", "Female", "Other"];
@@ -125,7 +127,10 @@ export default function VisaApplication() {
         </View>
 
         {/* Next Button */}
-        <TouchableOpacity style={styles.nextButton}>
+        <TouchableOpacity
+          style={styles.nextButton}
+          onPress={() => router.push("/Visa4")}
+        >
           <Text style={styles.nextButtonText}>Next</Text>
         </TouchableOpacity>
       </ScrollView>

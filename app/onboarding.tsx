@@ -8,7 +8,7 @@ import {
   Dimensions,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { Link } from "expo-router";
+import { useRouter } from "expo-router";
 
 const { width, height } = Dimensions.get("window");
 
@@ -40,6 +40,7 @@ const data = [
 ];
 
 const Onboarding1 = () => {
+  const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleNext = () => {
@@ -68,11 +69,12 @@ const Onboarding1 = () => {
         </View>
 
         {currentIndex === data.length - 1 ? (
-          <Link href="/signup1">
-            <TouchableOpacity style={styles.startButton}>
-              <Text style={styles.startButtonText}>Start Your Journey</Text>
-            </TouchableOpacity>
-          </Link>
+          <TouchableOpacity
+            style={styles.startButton}
+            onPress={() => router.push("/signup1")}
+          >
+            <Text style={styles.startButtonText}>Start Your Journey</Text>
+          </TouchableOpacity>
         ) : (
           <>
             <View style={styles.indicatorContainer}>

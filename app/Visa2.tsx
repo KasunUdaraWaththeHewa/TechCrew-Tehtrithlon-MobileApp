@@ -9,8 +9,10 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import VisaHeader from "@/components/VisaHeader";
 import CustomTabBar from "@/components/CustomTabBar";
+import { useRouter } from "expo-router";
 
 export default function VisaScreen() {
+  const router = useRouter();
   const [selectedVisa, setSelectedVisa] = useState(null);
 
   const visaOptions = [
@@ -84,7 +86,10 @@ export default function VisaScreen() {
             </View>
           </TouchableOpacity>
         ))}
-        <TouchableOpacity style={styles.proceedButton}>
+        <TouchableOpacity
+          style={styles.proceedButton}
+          onPress={() => router.push("/Visa3")}
+        >
           <Text style={styles.proceedButtonText}>Proceed</Text>
         </TouchableOpacity>
       </ScrollView>

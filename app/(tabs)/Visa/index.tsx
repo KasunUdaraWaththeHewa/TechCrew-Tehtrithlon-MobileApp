@@ -2,8 +2,10 @@ import React from "react";
 import { View, StyleSheet, Text, TouchableOpacity, Image } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import VisaHeader from "@/components/VisaHeader";
+import { useRouter } from "expo-router";
 
 export default function VisaScreen() {
+  const router = useRouter();
   return (
     <>
       <VisaHeader />
@@ -23,7 +25,10 @@ export default function VisaScreen() {
           </Text>
           <Ionicons name="arrow-forward" size={16} color="#FFF" />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => router.push("/Visa2")}
+        >
           <Text style={styles.buttonText}>Start Visa Application</Text>
           <Ionicons name="arrow-forward" size={16} color="#FFF" />
         </TouchableOpacity>

@@ -1,9 +1,8 @@
 import React from "react";
 import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { usePathname, useRouter } from "expo-router";
+import { usePathname, useRouter, Href } from "expo-router";
 
-// Define a type alias for valid icon names
 type IconName =
   | "home-outline"
   | "document-text-outline"
@@ -11,28 +10,36 @@ type IconName =
   | "notifications-outline"
   | "person-outline";
 
-// Define the tabs configuration
 const tabs = [
-  { name: "Home/index", title: "Home", icon: "home-outline" as IconName },
   {
-    name: "Visa/index",
+    name: "Home",
+    title: "Home",
+    icon: "home-outline" as IconName,
+    path: "/Home",
+  },
+  {
+    name: "Visa",
     title: "Visa",
     icon: "document-text-outline" as IconName,
+    path: "/Visa",
   },
   {
-    name: "Explore/index",
+    name: "Explore",
     title: "Explore",
     icon: "compass-outline" as IconName,
+    path: "/Explore",
   },
   {
-    name: "Alerts/index",
+    name: "Alerts",
     title: "Alerts",
     icon: "notifications-outline" as IconName,
+    path: "/Alerts",
   },
   {
-    name: "Profile/index",
+    name: "Profile",
     title: "Profile",
     icon: "person-outline" as IconName,
+    path: "/Profile",
   },
 ];
 
@@ -41,54 +48,71 @@ const CustomTabBar = () => {
   const router = useRouter();
 
   const handlePress = (path: string) => {
-    // router.push(path);
+    router.push(path as Href);
   };
 
   return (
     <View style={styles.tabBar}>
-      {tabs.map((tab) => (
-        <TouchableOpacity
-          key={tab.name}
-          style={[styles.tabItem, pathname === tab.name && styles.activeTab]}
-          onPress={() => handlePress(tab.name)}
-        >
-          {tab.name === "Explore/index" ? (
-            <>
-              <View style={styles.exploreIconContainer}>
-                <View style={styles.exploreIconInner}>
-                  <Ionicons name={tab.icon} size={35} color="white" />
+      {tabs.map((tab) => {
+        const isVisaTab = tab.name === "Visa";
+        const isActiveTab = pathname === tab.path;
+
+        return (
+          <TouchableOpacity
+            key={tab.name}
+            style={[
+              styles.tabItem,
+              isActiveTab && styles.activeTab,
+              isVisaTab && isActiveTab && styles.activeVisaTab,
+            ]}
+            onPress={() => handlePress(tab.path)}
+          >
+            {tab.name === "Explore" ? (
+              <>
+                <View style={styles.exploreIconContainer}>
+                  <View style={styles.exploreIconInner}>
+                    <Ionicons name={tab.icon} size={30} color="black" />
+                  </View>
                 </View>
-              </View>
-              <Text
-                style={[
-                  styles.tabLabel,
-                  pathname === tab.name
-                    ? styles.activeTabLabelExplore
-                    : styles.inactiveTabLabelExplore,
-                ]}
-              >
-                {tab.title}
-              </Text>
-            </>
-          ) : (
-            <>
-              <Ionicons
-                name={tab.icon}
-                size={30}
-                color={pathname === tab.name ? "#FCC423" : "#EAEAEA"}
-              />
-              <Text
-                style={[
-                  styles.tabLabel,
-                  pathname === tab.name && styles.activeTabLabel,
-                ]}
-              >
-                {tab.title}
-              </Text>
-            </>
-          )}
-        </TouchableOpacity>
-      ))}
+                <Text
+                  style={[
+                    styles.tabLabel,
+                    pathname === tab.path
+                      ? styles.activeTabLabelExplore
+                      : styles.inactiveTabLabelExplore,
+                  ]}
+                >
+                  {tab.title}
+                </Text>
+              </>
+            ) : (
+              <>
+                <Ionicons
+                  name={tab.icon}
+                  size={25}
+                  color={
+                    isVisaTab && isActiveTab
+                      ? "black" // Icon color when Visa tab is active
+                      : isActiveTab
+                      ? "#FCC423"
+                      : "#EAEAEA"
+                  }
+                />
+                <Text
+                  style={[
+                    styles.tabLabel,
+                    isVisaTab && isActiveTab
+                      ? styles.activeVisaTabLabel
+                      : isActiveTab && styles.activeTabLabel,
+                  ]}
+                >
+                  {tab.title}
+                </Text>
+              </>
+            )}
+          </TouchableOpacity>
+        );
+      })}
     </View>
   );
 };
@@ -104,10 +128,17 @@ const styles = StyleSheet.create({
   },
   tabItem: {
     alignItems: "center",
+    padding: 10,
   },
   activeTab: {
     borderBottomWidth: 2,
     borderBottomColor: "#FCC423",
+  },
+  activeVisaTab: {
+    backgroundColor: "#FCC423", // Gold background color for active Visa tab
+    borderRadius: 10, // Optional: add border radius to match the look
+    paddingVertical: 5,
+    paddingHorizontal: 15,
   },
   tabLabel: {
     fontSize: 14,
@@ -117,11 +148,14 @@ const styles = StyleSheet.create({
   activeTabLabel: {
     color: "#FCC423",
   },
+  activeVisaTabLabel: {
+    color: "black", // Black text color for active Visa tab
+  },
   inactiveTabLabelExplore: {
-    color: "#EAEAEA", // Default inactive color for Explore
+    color: "#EAEAEA",
   },
   activeTabLabelExplore: {
-    color: "white", // Active color for Explore
+    color: "white",
   },
   exploreIconContainer: {
     width: 90,
@@ -140,7 +174,7 @@ const styles = StyleSheet.create({
     width: 70,
     height: 70,
     borderRadius: 100,
-    backgroundColor: "#FBBC04",
+    backgroundColor: "#FFFFFF",
     justifyContent: "center",
     alignItems: "center",
   },
