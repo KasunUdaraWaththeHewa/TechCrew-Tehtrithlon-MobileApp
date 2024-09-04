@@ -42,7 +42,7 @@ export default function TabsLayout() {
         name="Explore/index"
         options={{
           title: "Explore",
-          tabBarIcon: ({ color }) => (
+          tabBarIcon: ({ focused }) => (
             <View
               style={{
                 width: 80,
@@ -63,12 +63,16 @@ export default function TabsLayout() {
                   width: 65,
                   height: 65,
                   borderRadius: 100,
-                  backgroundColor: "#ffffff",
+                  backgroundColor: focused ? "#FCC423" : "#ffffff", // Gold when focused, white when not
                   justifyContent: "center",
                   alignItems: "center",
                 }}
               >
-                <Ionicons name="compass-outline" size={30} color="black" />
+                <Ionicons
+                  name="compass-outline"
+                  size={30}
+                  color={focused ? "black" : "black"}
+                />
               </View>
             </View>
           ),
