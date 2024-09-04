@@ -7,15 +7,15 @@ export default function TabsLayout() {
     <Tabs
       screenOptions={{
         tabBarStyle: {
-          backgroundColor: "#0D0D0D",
-          height: 70,
-          paddingVertical: 10,
+          backgroundColor: "black",
+          height: 70, // Adjust the height as needed
+          paddingVertical: 10, // Adjust padding if necessary
         },
-        tabBarActiveTintColor: "#FCC423",
+        tabBarActiveTintColor: "#ffffff",
         tabBarInactiveTintColor: "#EAEAEA",
         tabBarLabelStyle: {
-          fontSize: 14,
-          fontWeight: 'bold',
+          fontSize: 14, // Increase the font size here
+          fontWeight: "bold", // Optional: make the font bold
         },
         headerShown: false,
       }}
@@ -30,9 +30,9 @@ export default function TabsLayout() {
         }}
       />
       <Tabs.Screen
-        name="Visa"
+        name="E-Passport"
         options={{
-          title: "Visa",
+          title: "E-Passport",
           tabBarIcon: ({ color }) => (
             <Ionicons name="document-text-outline" size={30} color={color} />
           ),
@@ -45,8 +45,8 @@ export default function TabsLayout() {
           tabBarIcon: ({ color }) => (
             <View
               style={{
-                width: 75,
-                height: 75,
+                width: 90,
+                height: 90,
                 borderRadius: 100,
                 backgroundColor: "black",
                 justifyContent: "center",
@@ -60,19 +60,15 @@ export default function TabsLayout() {
             >
               <View
                 style={{
-                  width: 55,
-                  height: 55,
+                  width: 70,
+                  height: 70,
                   borderRadius: 100,
-                  backgroundColor: "#FFFFFF",
+                  backgroundColor: "#FBBC04",
                   justifyContent: "center",
                   alignItems: "center",
                 }}
               >
-                <Ionicons
-                  name="compass-outline"
-                  size={20}
-                  color="black"
-                />
+                <Ionicons name="compass-outline" size={35} color="white" />
               </View>
             </View>
           ),
