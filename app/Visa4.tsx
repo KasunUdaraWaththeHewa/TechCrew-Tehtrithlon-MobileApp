@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import VisaHeader from "@/components/VisaHeader";
+import CustomTabBar from "@/components/CustomTabBar";
 
 export default function VisaApplication() {
   return (
@@ -81,6 +82,7 @@ export default function VisaApplication() {
           </TouchableOpacity>
         </View>
       </ScrollView>
+      <CustomTabBar />
     </>
   );
 }

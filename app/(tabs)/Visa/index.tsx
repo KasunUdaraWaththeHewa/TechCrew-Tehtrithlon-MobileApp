@@ -34,7 +34,7 @@ export default function VisaScreen() {
         </Text>
         <View style={styles.digitalIDFlex}>
           <Image
-            source={require("../../assets/images/DigitalID.png")}
+            source={require("../../../assets/images/DigitalID.png")}
             style={styles.digitalIdImage}
             resizeMode="contain"
           />

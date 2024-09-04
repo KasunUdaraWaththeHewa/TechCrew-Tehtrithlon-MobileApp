@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import VisaHeader from "@/components/VisaHeader";
+import CustomTabBar from "@/components/CustomTabBar";
 
 export default function VisaApplication() {
   const [selectedGender, setSelectedGender] = useState("Male");
@@ -159,6 +160,7 @@ export default function VisaApplication() {
           </View>
         </TouchableOpacity>
       </Modal>
+      <CustomTabBar />
     </>
   );
 }
