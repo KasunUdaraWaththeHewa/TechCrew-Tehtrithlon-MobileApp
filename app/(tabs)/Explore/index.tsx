@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from 'react-native';
 export default function ExploreScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>E-Passport Screen</Text>
+      <Text style={styles.title}>Explore Screen</Text>
     </View>
   );
 }
