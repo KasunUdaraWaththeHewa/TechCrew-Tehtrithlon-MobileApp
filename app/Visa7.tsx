@@ -21,7 +21,7 @@ export default function VisaStatus() {
           <View style={styles.statusStepsContainer}>
             <View style={styles.statusStep}>
               <View style={styles.iconContainer}>
-                <FontAwesome name="file-text-o" size={24} color="#FCC423" />
+                <FontAwesome name="file-text-o" size={20} color="#FCC423" />
               </View>
               <Text style={styles.stepLabel}>Details</Text>
             </View>
@@ -30,7 +30,7 @@ export default function VisaStatus() {
 
             <View style={styles.statusStep}>
               <View style={styles.iconContainer}>
-                <FontAwesome name="credit-card" size={24} color="#999" />
+                <FontAwesome name="credit-card" size={20} color="#999" />
               </View>
               <Text style={styles.stepLabel}>Payment</Text>
             </View>
@@ -39,7 +39,7 @@ export default function VisaStatus() {
 
             <View style={styles.statusStep}>
               <View style={styles.iconContainer}>
-                <FontAwesome name="search" size={24} color="#999" />
+                <FontAwesome name="search" size={20} color="#999" />
               </View>
               <Text style={styles.stepLabel}>Review</Text>
             </View>
@@ -48,7 +48,7 @@ export default function VisaStatus() {
 
             <View style={styles.statusStep}>
               <View style={styles.iconContainer}>
-                <FontAwesome name="gavel" size={24} color="#999" />
+                <FontAwesome name="gavel" size={20} color="#999" />
               </View>
               <Text style={styles.stepLabel}>Decision Making</Text>
             </View>
