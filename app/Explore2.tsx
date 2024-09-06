@@ -24,7 +24,7 @@ const Explore2 = () => {
        image: require("../assets/images/ocean.png"),
      },
      {
-       title: "Beach",
+       title: "Beaches",
        image: require("../assets/images/beach.png"),
      },
      {
@@ -56,6 +56,17 @@ const Explore2 = () => {
      },
    ];
 
+   const beaches = [
+     {
+       title: "Nilaveli Beach",
+       image: require("../assets/images/nilaveli.jpg"),
+     },
+     {
+       title: "Nilaveli Beach",
+       image: require("../assets/images/nilaveli.jpg"),
+     },
+   ];
+
    const handleCategoryPress = (category: { title: string; image?: any }) => {
      router.push({
        pathname: "/Explore2", // Adjust the path if needed
@@ -63,10 +74,10 @@ const Explore2 = () => {
      });
    };
 
-   const handleCardPress = (mountain: { title: string; image?: any }) => {
+   const handleCardPress = (card: { title: string; image?: any }) => {
      router.push({
        pathname: "/Explore3", // Adjust the path if needed
-       params: { title: mountain.title, image: mountain.image }, // Change 'query' to 'params'
+       params: { title: card.title, image: card.image }, // Change 'query' to 'params'
      });
    };
 
@@ -125,6 +136,21 @@ const Explore2 = () => {
                   place={mountain.title}
                   venue={""}
                   image={mountain.image}
+                  likes={""}
+                />
+              </TouchableOpacity>
+            ))}
+          {title === "Beaches" &&
+            beaches.map((beach, index) => (
+              <TouchableOpacity
+                key={index}
+                onPress={() => handleCardPress(beach)}
+              >
+                <PlaceCard
+                  key={index}
+                  place={beach.title}
+                  venue={""}
+                  image={beach.image}
                   likes={""}
                 />
               </TouchableOpacity>
