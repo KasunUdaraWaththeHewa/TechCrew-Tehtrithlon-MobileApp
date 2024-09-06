@@ -26,7 +26,7 @@ export default function ExploreScreen() {
       image: require("../../../assets/images/ocean.png"),
     },
     {
-      title: "Beach",
+      title: "Beaches",
       image: require("../../../assets/images/beach.png"),
     },
     {
@@ -48,7 +48,7 @@ export default function ExploreScreen() {
     {
       title: "Nilaveli Beach",
       venue: "Trincomalee, Sri Lanka",
-      image: require("../../../assets/images/beach.png"),
+      image: require("../../../assets/images/nilaveli.jpg"),
     },
     {
       title: "Sinharaja Forest",
@@ -70,7 +70,7 @@ export default function ExploreScreen() {
       bloggerName: "John Doe",
       title: "Sigiriya",
       venue: "Trincomalee, Sri Lanka",
-      image: require("../../../assets/images/sigiriya.jpg"),
+      image: require("../../../assets/images/nilaveli.jpg"),
     },
   ];
 
@@ -84,7 +84,7 @@ export default function ExploreScreen() {
     {
       title: "Nilaveli Beach",
       venue: "Trincomalee, Sri Lanka",
-      image: require("../../../assets/images/beach.png"),
+      image: require("../../../assets/images/nilaveli.jpg"),
       likes: "100",
     },
     {
@@ -134,7 +134,7 @@ export default function ExploreScreen() {
         <View style={styles.imageContainer}>
           <Image
             source={require("../../../assets/images/explore1.png")}
-            style={{ width: "100%" }}
+            style={{ width: "100%", height: 150, marginBottom: 30 }}
           />
         </View>
 
@@ -142,7 +142,7 @@ export default function ExploreScreen() {
         <View style={styles.categoryContainer}>
           <View style={styles.textContainer}>
             <Text style={{ fontWeight: "bold", fontSize: 16 }}>Categories</Text>
-            <Text style={{ color: "blue" }}>See All</Text>
+            {/* <Text style={{ color: "blue" }}>See All</Text> */}
           </View>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             {categories.map((category, index) => (
@@ -167,7 +167,7 @@ export default function ExploreScreen() {
             <Text style={{ fontWeight: "bold", fontSize: 16 }}>
               Recommended Places
             </Text>
-            <Text style={{ color: "blue" }}>See All</Text>
+            {/* <Text style={{ color: "blue" }}>See All</Text> */}
           </View>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             {recommendedPlaces.map((recommendedPlace, index) => (
@@ -218,7 +218,7 @@ export default function ExploreScreen() {
             <Text style={{ fontWeight: "bold", fontSize: 16 }}>
               Popular Places
             </Text>
-            <Text style={{ color: "blue" }}>See All</Text>
+            {/* <Text style={{ color: "blue" }}>See All</Text> */}
           </View>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             {popularPlaces.map((popularPlace, index) => (
@@ -269,7 +269,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     paddingHorizontal: 15,
     marginHorizontal: 30,
-    marginTop: 20,
+    marginVertical: 20,
     elevation: 3,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },

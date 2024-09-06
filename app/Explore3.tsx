@@ -28,10 +28,10 @@ const Explore3 = () => {
     {
       title: "Nilaveli Beach",
       description1:
-        "Sigiriya or Sinhagiri (Lion Rock Sinhala: සීගිරිය, Tamil: சிகிரியா/சிங்ககிரி, pronounced SEE-gi-ri-yə) is an ancient rock fortress located in the northern Matale District near the town of Dambulla in the Central Province, Sri Lanka. It is a site of historical and archaeological significance that is dominated by a massive column of granite approximately 180 m (590 ft) high.",
-      description2:
-        "According to the ancient Sri Lankan chronicle the Cūḷavaṃsa, this area was a large forest, then after storms and landslides it became a hill and was selected by King Kashyapa (AD 477–495) for his new capital. He built his palace on top of this rock and decorated its sides with colourful frescoes. On a small plateau about halfway up the side of this rock he built a gateway in the form of an enormous lion. The name of this place is derived from this structure; Siṃhagiri, the Lion Rock.",
-      image: require("../assets/images/sigiriya.jpg"),
+        "Pristine white sands, stretch far into the distance. The gentle waves slip softly to shore. The turquoise ocean seems endless as it blends into the clouds. Slowly, the golden sun lifts above the horizon – paradise at dawn? At Nilaveli Beach Hotel, this is just another ordinary morning. Located 275km from Colombo, on the North East Coast of Sri Lanka, Nilaveli is the ultimate getaway for those who wish for quiet bliss on a tropical heaven, far away from the cares of life.",
+      // description2:
+      //   "According to the ancient Sri Lankan chronicle the Cūḷavaṃsa, this area was a large forest, then after storms and landslides it became a hill and was selected by King Kashyapa (AD 477–495) for his new capital. He built his palace on top of this rock and decorated its sides with colourful frescoes. On a small plateau about halfway up the side of this rock he built a gateway in the form of an enormous lion. The name of this place is derived from this structure; Siṃhagiri, the Lion Rock.",
+      image: require("../assets/images/nilaveli.jpg"),
     },
   ];
 
@@ -40,7 +40,7 @@ const Explore3 = () => {
     <View style={styles.container}>
       {descriptions.map(
         (description, index) =>
-          description.title === title ? (
+          description.title === title && (
             <View key={index}>
               {/* Image */}
             <View>
@@ -65,8 +65,7 @@ const Explore3 = () => {
 
               {/* <Text style={styles.location}>Location</Text> */}
             </View>
-          ) : 
-          ( <Text>Content Not Found</Text> )
+          )
       )}
     </View>
   );
