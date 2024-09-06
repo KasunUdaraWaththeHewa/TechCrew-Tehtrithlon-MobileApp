@@ -9,15 +9,25 @@ import {
   Image,
 } from "react-native";
 
-export default function CategoryCard({ title, image }: { title: string; image: any }) {
+export default function CategoryCard({
+  title,
+  image,
+  clickedTitle,
+}: {
+  title: string;
+  image: any;
+  onPress?: () => void;
+  key?: number;
+  clickedTitle: string;
+}) {
 
-    return (
-        <View style={styles.card}>
-            <Image source={image} />
-            <Text style={styles.title}>{title}</Text>
-        </View>
-    );
-
+  return (
+    <View style={clickedTitle === title ? styles.clickedCard : styles.card}>
+      <Image source={image} style={styles.images} />
+      <Text style={styles.title}>{title}</Text>
+    </View>
+  );
+  
 }
 
 const styles = StyleSheet.create({
@@ -28,13 +38,32 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderRadius: 15,
     borderColor: "#888",
-    padding: 10,
+    paddingHorizontal: 12,
+    paddingVertical: 2,
     borderStyle: "solid",
     borderWidth: 1,
     margin: 5,
   },
-    title: {
-        fontSize: 15,
-        fontWeight: "bold",
-    },
+  clickedCard: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    borderRadius: 15,
+    borderColor: "#888",
+    paddingHorizontal: 12,
+    paddingVertical: 2,
+    borderStyle: "solid",
+    backgroundColor: "gold",
+    borderWidth: 1,
+    margin: 5,
+  },
+  title: {
+    fontSize: 15,
+    fontWeight: "bold",
+  },
+  images: {
+    width: 50,
+    height: 50,
+  },
 });
