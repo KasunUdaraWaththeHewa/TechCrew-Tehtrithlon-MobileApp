@@ -11,33 +11,111 @@ import {
 
 import VisaHeader from "@/components/VisaHeader";
 import CategoryCard from '@/components/CategoryCard';
+import PlaceCard from '@/components/PlaceCard';
+import BlogCard from '@/components/BlogCard';
+
+import { useRouter } from 'expo-router';
 
 export default function ExploreScreen() {
+
+  const router = useRouter();
 
   const categories = [
     {
       title: "Ocean",
-      image: require("../../../assets/images/news.png"),
+      image: require("../../../assets/images/ocean.png"),
     },
     {
       title: "Beach",
-      image: require("../../../assets/images/news.png"),
+      image: require("../../../assets/images/beach.png"),
     },
     {
       title: "Mountains",
-      image: require("../../../assets/images/news.png"),
+      image: require("../../../assets/images/mountains.png"),
     },
     {
       title: "Forests",
-      image: require("../../../assets/images/news.png"),
+      image: require("../../../assets/images/forests.png"),
     },
   ];
+
+  const recommendedPlaces = [
+    {
+      title: "Sigiriya",
+      venue: "Matale, Sri Lanka",
+      image: require("../../../assets/images/sigiriya.jpg"),
+    },
+    {
+      title: "Nilaveli Beach",
+      venue: "Trincomalee, Sri Lanka",
+      image: require("../../../assets/images/beach.png"),
+    },
+    {
+      title: "Sinharaja Forest",
+      venue: "Deniyaya, Sri Lanka",
+      image: require("../../../assets/images/mountains.png"),
+    },
+  ];
+
+  const blogs = [
+    {
+      profileImage: require("../../../assets/icons/profile.png"),
+      bloggerName: "John Doe",
+      title: "My best experience in Sri Lanka",
+      venue: "Matale, Sri Lanka",
+      image: require("../../../assets/images/sigiriya.jpg"),
+    },
+    {
+      profileImage: require("../../../assets/icons/profile.png"),
+      bloggerName: "John Doe",
+      title: "Sigiriya",
+      venue: "Trincomalee, Sri Lanka",
+      image: require("../../../assets/images/sigiriya.jpg"),
+    },
+  ];
+
+  const popularPlaces = [
+    {
+      title: "Sigiriya",
+      venue: "Matale, Sri Lanka",
+      image: require("../../../assets/images/sigiriya.jpg"),
+      likes: "100",
+    },
+    {
+      title: "Nilaveli Beach",
+      venue: "Trincomalee, Sri Lanka",
+      image: require("../../../assets/images/beach.png"),
+      likes: "100",
+    },
+    {
+      title: "Sinharaja Forest",
+      venue: "Deniyaya, Sri Lanka",
+      image: require("../../../assets/images/mountains.png"),
+      likes: "100",
+    },
+  ];
+
+  const handleCategoryPress = (category: { title: string; image?: any; }) => {
+    router.push({
+      pathname: "/Explore2", // Adjust the path if needed
+      params: { title: category.title }, // Change 'query' to 'params'
+    });
+  };
+
+  const handleCardPress = (card: { title: string; image?: any }) => {
+    router.push({
+      pathname: "/Explore3",
+      params: { title: card.title, image: card.image },
+    });
+  };
 
   return (
     <View style={styles.container}>
       <VisaHeader />
+
       <Text style={styles.goldTitle}>Where do you want to explore today?</Text>
 
+      {/* Search Bar */}
       <View style={styles.searchContainer}>
         <TextInput
           style={styles.searchInput}
@@ -52,30 +130,123 @@ export default function ExploreScreen() {
         </TouchableOpacity>
       </View>
 
-      <View style={styles.imageContainer}>
-        <Image source={require("../../../assets/images/explore1.png")} />
-      </View>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={styles.imageContainer}>
+          <Image
+            source={require("../../../assets/images/explore1.png")}
+            style={{ width: "100%" }}
+          />
+        </View>
 
+        {/* Categories */}
         <View style={styles.categoryContainer}>
-          <Text>Categories</Text>
-          <Text>See All</Text>
-          <ScrollView horizontal>
+          <View style={styles.textContainer}>
+            <Text style={{ fontWeight: "bold", fontSize: 16 }}>Categories</Text>
+            <Text style={{ color: "blue" }}>See All</Text>
+          </View>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             {categories.map((category, index) => (
-            <CategoryCard
-              key={index}
-              title={category.title}
-              image={category.image}
-            />
-          ))}
+              <TouchableOpacity
+                key={index}
+                onPress={() => handleCategoryPress(category)}
+              >
+                <CategoryCard
+                  key={index}
+                  title={category.title}
+                  image={category.image}
+                  clickedTitle={""}
+                />
+              </TouchableOpacity>
+            ))}
           </ScrollView>
         </View>
-      </View>
+
+        {/* Recommended Places */}
+        <View style={styles.placesContainer}>
+          <View style={styles.textContainer}>
+            <Text style={{ fontWeight: "bold", fontSize: 16 }}>
+              Recommended Places
+            </Text>
+            <Text style={{ color: "blue" }}>See All</Text>
+          </View>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+            {recommendedPlaces.map((recommendedPlace, index) => (
+              <TouchableOpacity
+                key={index}
+                onPress={() => handleCardPress(recommendedPlace)}
+              >
+                <PlaceCard
+                  key={index}
+                  place={recommendedPlace.title}
+                  venue={recommendedPlace.venue}
+                  image={recommendedPlace.image}
+                  likes={""}
+                />
+              </TouchableOpacity>
+            ))}
+          </ScrollView>
+        </View>
+
+        {/* New Blogs */}
+        <View style={styles.placesContainer}>
+          <View style={styles.textContainer}>
+            <Text style={{ fontWeight: "bold", fontSize: 16 }}>New Blogs</Text>
+            <Text style={{ color: "blue" }}>See All</Text>
+          </View>
+          <ScrollView showsVerticalScrollIndicator={false}>
+            {blogs.map((blog, index) => (
+              <TouchableOpacity
+                key={index}
+                onPress={() => handleCardPress(blog)}
+              >
+                <BlogCard
+                  key={index}
+                  profileImage={blog.profileImage}
+                  bloggerName={blog.bloggerName}
+                  title={blog.title}
+                  venue={blog.venue}
+                  image={blog.image}
+                />
+              </TouchableOpacity>
+            ))}
+          </ScrollView>
+        </View>
+
+        {/* Popular places */}
+        <View style={styles.placesContainer}>
+          <View style={styles.textContainer}>
+            <Text style={{ fontWeight: "bold", fontSize: 16 }}>
+              Popular Places
+            </Text>
+            <Text style={{ color: "blue" }}>See All</Text>
+          </View>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+            {popularPlaces.map((popularPlace, index) => (
+              <TouchableOpacity
+                key={index}
+                onPress={() => handleCardPress(popularPlace)}
+              >
+                <PlaceCard
+                  key={index}
+                  place={popularPlace.title}
+                  venue={popularPlace.venue}
+                  image={popularPlace.image}
+                  likes={popularPlace.likes}
+                />
+              </TouchableOpacity>
+            ))}
+          </ScrollView>
+        </View>
+      </ScrollView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: "flex-start",
+    alignItems: "center",
     backgroundColor: "#f5f5f5",
   },
   title: {
@@ -89,6 +260,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     textAlign: "left",
     color: "gold",
+    alignSelf: "flex-start"
   },
   searchContainer: {
     flexDirection: "row",
@@ -127,7 +299,23 @@ const styles = StyleSheet.create({
     height: 100,
   },
   categoryContainer: {
-    width: "90%",
-
-  }
+    width: "95%",
+    marginHorizontal: 10,
+    marginTop: 20,
+  },
+  textContainer: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-end",
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    marginBottom: 5,
+  },
+  placesContainer: {
+    width: "95%",
+    marginHorizontal: 10,
+    marginTop: 20,
+    maxHeight: 400
+  },
 });
